@@ -9,3 +9,4 @@ function AbacatePayClientRequest:new(name, cellphone, email, taxId)
     setmetatable(AbacatePayClientObj, AbacatePayClientRequest);
     return AbacatePayClientObj;
 end
+ return AbacatePayClientRequest
