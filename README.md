@@ -1,132 +1,60 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AbacatePay SDK - Lua</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #27ae60;
-        }
-        h2 {
-            color: #2980b9;
-        }
-        code {
-            background-color: #f1f1f1;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-        pre {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 20px;
-            border-radius: 6px;
-            overflow-x: auto;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        li {
-            margin: 5px 0;
-        }
-        a {
-            color: #2980b9;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
+# AbacatePay SDK - Lua
 
-    <h1>AbacatePay SDK - Lua</h1>
-    
-    <div class="section">
-        <h2>Sobre</h2>
-        <p>
-            O <strong>AbacatePay SDK</strong> para Lua é uma biblioteca que facilita a integração com o sistema de pagamentos <strong>AbacatePay</strong>. Este SDK permite a criação e listagem de clientes, além da interação com os produtos e cobranças do sistema, por meio de uma API RESTful.
-        </p>
-    </div>
+## Sobre
 
-    <div class="section">
-        <h2>Estrutura do Projeto</h2>
-        <p>
-            O projeto está organizado da seguinte forma:
-        </p>
-        <ul>
-            <li><strong>src/</strong> - Contém os arquivos principais do SDK.</li>
-            <li><strong>API/</strong> - Lógica para interação com as rotas da API AbacatePay.</li>
-            <li><strong>Config/</strong> - Configuração básica para a conexão com a API.</li>
-            <li><strong>Models/</strong> - Modelos de dados como Cliente e Produto.</li>
-            <li><strong>Utils/</strong> - Funções utilitárias, como validações e helpers.</li>
-        </ul>
-    </div>
+O **AbacatePay SDK** para Lua é uma biblioteca que facilita a integração com o sistema de pagamentos **AbacatePay**. Este SDK permite a criação e listagem de clientes, além da interação com os produtos e cobranças do sistema, por meio de uma API RESTful.
 
-    <div class="section">
-        <h2>Dependências</h2>
-        <p>
-            Este SDK depende das seguintes bibliotecas externas:
-        </p>
-        <ul>
-            <li><code>socket.http</code>: Para realizar requisições HTTP.</li>
-            <li><code>ltn12</code>: Para trabalhar com fluxo de dados.</li>
-            <li><code>dkjson</code> (opcional): Para decodificação de JSON (se necessário para processar respostas).</li>
-        </ul>
-    </div>
+## Estrutura do Projeto
 
-    <div class="section">
-        <h2>Instalação</h2>
-        <p>Para instalar o SDK:</p>
-        <pre><code>git clone https://github.com/seuusuario/abacatepay-sdk-lua.git
-cd abacatepay-sdk-lua</code></pre>
-        <p>Instale as dependências:</p>
-        <pre><code>luarocks install luasocket
-luarocks install dkjson   # Opcional, se usar JSON</code></pre>
-    </div>
+O projeto está organizado da seguinte forma:
 
-    <div class="section">
-        <h2>Configuração</h2>
-        <p>Para configurar o SDK, defina a URL base da API e a chave de API fornecida pela AbacatePay:</p>
-        <pre><code>local config = require("Config")
-config:set("https://api.abacatepay.com/", "sua_chave_de_api")</code></pre>
-    </div>
+- **src/**: Contém os arquivos principais do SDK.
+- **API/**: Lógica para interação com as rotas da API AbacatePay.
+- **Config/**: Configuração básica para a conexão com a API.
+- **Models/**: Modelos de dados como Cliente e Produto.
+- **Utils/**: Funções utilitárias, como validações e helpers.
 
-    <div class="section">
-        <h2>Uso</h2>
-        <p>Para usar o SDK, veja os exemplos abaixo.</p>
+## Dependências
 
-        <h3>Criar um Novo Cliente</h3>
-        <p>Para criar um novo cliente, use a função <code>createNewClient</code>. Você precisa passar os dados do cliente no formato <code>x-www-form-urlencoded</code>:</p>
-        <pre><code>local config = require("Config")
-local clientService = require("API.AbacatePayClientsService")
+Este SDK depende das seguintes bibliotecas externas:
 
-local req = "name=John Doe&cellphone=1234567890&email=john@example.com&taxId=123456789"
-local response = clientService.createNewClient(req, config:get())
+- `socket.http`: Para realizar requisições HTTP.
+- `ltn12`: Para trabalhar com fluxo de dados.
+- `dkjson` (opcional): Para decodificação de JSON (se necessário para processar respostas).
 
-print(response)</code></pre>
+## Instalação
 
-        <h3>Listar Clientes</h3>
-        <p>Para listar os clientes cadastrados, use a função <code>listClients</code>:</p>
-        <pre><code>local response = clientService.listClients(config:get())
-print(response)</code></pre>
-    </div>
+Para instalar o SDK:
 
-    <div class="section">
-        <h2>Contribuições</h2>
-        <p>Se você deseja contribuir com o projeto, faça um fork deste repositório, crie uma branch, faça suas alterações e envie um pull request.</p>
-    </div>
+```bash
+git clone https://github.com/seuusuario/abacatepay-sdk-lua.git
+cd abacatepay-sdk-lua
+```
+instale as dependências:
+<pre><code>
+luarocks install luasocket
+luarocks install dkjson   # Opcional, se usar JSON
+</code></pre>
 
-    <div class="section">
-        <h2>Licença</h2>
-        <p>Este projeto é licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.</p>
-    </div>
+## Configuração
+Para configurar o SDK, defina a URL base da API e a chave de API fornecida pela AbacatePay:
+<pre>
+<code>
+local SDK = require("src.Init")
+SDK.Config:set("https://api.abacatepay.com/", "sua_chave_de_api")
+</code>
+</pre>
 
-</body>
-</html>
+## Criando um Novo Cliente
+<pre>
+<code>
+local SDK= require("src.Init")
+SDK.Config:set("https://api.abacatepay.com/", "sua_chave_de_api")
+
+local req_body = "name=John Doe&cellphone=1234567890&email=john@example.com&taxId=123456789"
+local res = SDK.Client:createNewClient(req_body, SDK.Config:get())
+
+print(response)
+
+</code>
+</pre>
