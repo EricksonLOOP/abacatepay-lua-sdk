@@ -1,11 +1,15 @@
-AbacatePayClientRequest = {};
-AbacatePayClientRequest._index = AbacatePayClientRequest;
-function AbacatePayClientRequest:new(name, cellphone, email, taxId)
-    local AbacatePayClientObj = {}
-    AbacatePayClientObj.name = name;
-    AbacatePayClientObj.cellphone = cellphone;
-    AbacatePayClientObj.email = email;
-    AbacatePayClientObj.taxId = taxId;
-    setmetatable(AbacatePayClientObj, AbacatePayClientRequest);
-    return AbacatePayClientObj;
+local ClientRequest = {}
+ClientRequest.__index = ClientRequest
+
+function ClientRequest:new(name, cellphone, email, taxId)
+    local clientObj = {
+        name = name,
+        cellphone = cellphone,
+        email = email,
+        taxId = taxId
+    }
+    setmetatable(clientObj, ClientRequest)
+    return clientObj
 end
+
+return ClientRequest

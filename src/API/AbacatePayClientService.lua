@@ -1,39 +1,46 @@
-local AbacatePayClientRequest = require("../Models/AbacatePayClient/AbacatePayClientRequest")
+package.path = package.path .. ";./src/?.lua;./src/*/?.lua"
+
 local http = require("socket.http")
 local ltn12 = require("ltn12")
 
-AbacatePayService = {}
+AbacatePayClientsService = {}
 
-function AbacatePayService.createNewClient(req, config)
-    local request_body =
-        "{ 'name': '" .. req.name .. "', " ..
-        "'cellphone': '" .. req.cellphone .. "', " ..
-        "'email': '" .. req.email .. "', " ..
-        "'taxId': '" .. req.taxId .. "' }"
-
-    local url = config.baseUrl .. "customer/create"
-    local method = "POST"
-
-    local headers = {
-        ["Content-Type"] = "application/json",
-        ["Content-Length"] = tostring(#request_body),
-        ["Authorization"] = "Bearer " .. config.apiKey
-    }
-
+function AbacatePayClientsService.createNewClient(req, config)
     local response_body = {}
-    local res, code, response_headers, status = http.request {
-        url = url,
-        method = method,
-        headers = headers,
-        source = ltn12.source.string(request_body),
+    local result, status_code, headers, status_message = http.request {
+        url = config.baseUrl .. "customer/create",
+        method = "POST",
+        headers = {
+            ["Content-Type"]   = "application/x-www-form-urlencoded",
+            ["Content-Length"] = tostring(#req),
+            ["Authorization"]  = config.apiKey
+        },
+        source = ltn12.source.string(req),
         sink = ltn12.sink.table(response_body)
     }
-
-    if res then
-        print("Resposta do servidor: " .. table.concat(response_body))
+    if result then
+        return table.concat(response_body)
     else
-        print("Erro na requisição. Código de erro: " .. code)
+        return status_message
     end
 end
 
-return AbacatePayService
+function AbacatePayClientsService.listClients(config)
+    local response_body = {}
+    local result, status_code, headers, status_message = http.request {
+        url = config.baseUrl .. "customer/list",
+        headers = {
+            ["Authorization"] = config.apiKey
+        },
+        method = "GET",
+        sink = ltn12.sink.table(response_body)
+    }
+    if result then
+        return table.concat(response_body)
+    else
+        return status_message
+    end
+end
+
+-- Correção no retorno
+return AbacatePayClientsService

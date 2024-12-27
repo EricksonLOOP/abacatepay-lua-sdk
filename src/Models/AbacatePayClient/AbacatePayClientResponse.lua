@@ -1,12 +1,14 @@
-local metadata = require('./AbacatePayClientMetadata.lua')
+local metadata = require('AbacatePayClient.AbacatePayClientMetadata')
+
 AbacatePayClientResponse = {}
-AbacatePayClientResponse._index = AbacatePayClientResponse
-function AbacatePayClientResponse: new(id, metadata)
+AbacatePayClientResponse.__index = AbacatePayClientResponse
+
+function AbacatePayClientResponse:new(id, metadata)
     local AbacatePayClientResponseObj = {}
     AbacatePayClientResponseObj.id = id
     AbacatePayClientResponseObj.metadata = metadata
-setmetatable(AbacatePayClientResponseObj, AbacatePayClientResponse)
-return AbacatePayClientResponseObj
-    
+    setmetatable(AbacatePayClientResponseObj, AbacatePayClientResponse)
+    return AbacatePayClientResponseObj
 end
+
 return AbacatePayClientResponse
