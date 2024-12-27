@@ -42,5 +42,4 @@ function AbacatePayClientsService.listClients(config)
     end
 end
 
--- Correção no retorno
 return AbacatePayClientsService
