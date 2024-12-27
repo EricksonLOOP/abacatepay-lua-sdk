@@ -1,50 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AbacatePay SDK - Lua</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #27ae60;
-        }
-        h2 {
-            color: #2980b9;
-        }
-        code {
-            background-color: #f1f1f1;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-        pre {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 20px;
-            border-radius: 6px;
-            overflow-x: auto;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        li {
-            margin: 5px 0;
-        }
-        a {
-            color: #2980b9;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
 
     <h1>AbacatePay SDK - Lua</h1>
     
@@ -128,5 +81,4 @@ print(response)</code></pre>
         <p>Este projeto é licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.</p>
     </div>
 
-</body>
-</html>
+<
