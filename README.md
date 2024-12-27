@@ -27,7 +27,7 @@ Este SDK depende das seguintes bibliotecas externas:
 Para instalar o SDK:
 
 ```bash
-git clone https://github.com/seuusuario/abacatepay-sdk-lua.git
+git clone https://github.com/EricksonLOOP/abacatepay-sdk-lua.git
 cd abacatepay-sdk-lua
 ```
 instale as dependências:
@@ -51,10 +51,50 @@ SDK.Config:set("https://api.abacatepay.com/", "sua_chave_de_api")
 local SDK= require("src.Init")
 SDK.Config:set("https://api.abacatepay.com/", "sua_chave_de_api")
 
-local req_body = "name=John Doe&cellphone=1234567890&email=john@example.com&taxId=123456789"
-local res = SDK.Client:createNewClient(req_body, SDK.Config:get())
+local req_body = "name=John Doe&cellphone=1234567890&email=john@example.com&taxId=123456789" -- AbacatePayClientRequest
+local res = SDK.Client.createNewClient(req_body, SDK.Config:get())
 
-print(response)
+print(res)
 
 </code>
 </pre>
+
+## Listando Clientes
+<pre>
+<code>
+local SDK= require("src.Init")
+SDK.Config:set("https://api.abacatepay.com/", "sua_chave_de_api")
+
+local res = SDK.Client.listClients(SDK.Config:get()) -- Array -> AbacatePayClientResponse
+
+print(res)
+
+</code>
+</pre>
+## Criando um Novo Billing
+<pre>
+<code>
+local SDK= require("src.Init")
+SDK.Config:set("https://api.abacatepay.com/", "sua_chave_de_api")
+-- req_body = AbacatePayBillingRequest
+local res = SDK.Billing.createNewBilling(req_body, SDK.Config:get())
+
+print(res)
+
+</code>
+</pre>
+## Listando Clientes
+<pre>
+<code>
+local SDK= require("src.Init")
+SDK.Config:set("https://api.abacatepay.com/", "sua_chave_de_api")
+
+local res = SDK.Billing.listBilling(SDK.Config:get()) -- Array -> AbacatePayBillingResponse
+
+print(res)
+
+</code>
+</pre>
+
+## Contribuições
+Se você deseja contribuir com o projeto, faça um fork deste repositório, crie uma branch, faça suas alterações e envie um pull request.
