@@ -83,7 +83,7 @@ print(res)
 
 </code>
 </pre>
-## Listando Clientes
+## Listando Billings
 <pre>
 <code>
 local SDK= require("src.Init")
